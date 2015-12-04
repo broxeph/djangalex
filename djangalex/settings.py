@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +21,10 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 # Guess you need SECRET_KEY early
-from djangalex.local_settings import SECRET_KEY
+try:
+    from djangalex.local_settings import SECRET_KEY
+except ImportError:
+    sys.stderr.write("Local settings NOT imported.")
 
 
 # Application definition
@@ -136,7 +140,5 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 try:
     from djangalex.local_settings import *
-    sys.stderr.write("Local settings imported.")
 except ImportError:
-    sys.stderr.write("Production settings imported.")
     pass
