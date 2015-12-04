@@ -2,4 +2,4 @@
 /venv/
 staticfiles
 venv
-*local_settings
+*local_settings*
