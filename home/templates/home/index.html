@@ -1,0 +1,9 @@
+{% if boxes %}
+    <ul>
+    {% for box in boxes %}
+        <li><a href="{{ box.link_url }}">{{ box.name}} ({{ box.logo_url }})</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No boxes are available.</p>
+{% endif %}
