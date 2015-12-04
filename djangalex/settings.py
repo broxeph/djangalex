@@ -134,4 +134,9 @@ STATICFILES_DIRS = (
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-import djangalex.local_settings
+try:
+    from djangalex.local_settings import *
+    sys.stderr.write("Local settings imported.")
+except ImportError:
+    sys.stderr.write("Production settings imported.")
+    pass
