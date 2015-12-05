@@ -1,3 +1,6 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'home/home.css' %}">
+
 <h1><u>Salty Journey</u></h1>
 <h2>A Grand Foray</h2>
 <h4>By Alex Ball</h4>
@@ -8,6 +11,9 @@
         <li><a href="{{ box.link_url }}">{{ box.name}} ({{ box.logo_url }})</a></li>
     {% endfor %}
     </ul>
+    {% for box in boxes %}
+        <div class="box"><a href="{{ box.link_url }}">{{ box.name}} ({{ box.logo_url }})</a></div>
+    {% endfor %}
 {% else %}
     <p>No boxes are available.</p>
 {% endif %}
