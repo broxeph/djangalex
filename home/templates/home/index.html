@@ -1,19 +1,26 @@
 {% load staticfiles %}
 <link rel="stylesheet" href="{% static 'home/home.css' %}">
 
-<h1><u>Salty Journey</u></h1>
-<h2>A Grand Foray</h2>
-<h4>By Alex Ball</h4>
-<a href="http://www.alexball.name">alexball.name</a>
-{% if boxes %}
-    <ul>
-    {% for box in boxes %}
-        <li><a href="{{ box.link_url }}">{{ box.name}} ({{ box.logo_url }})</a></li>
-    {% endfor %}
-    </ul>
-    {% for box in boxes %}
-        <div class="box"><a href="{{ box.link_url }}">{{ box.name}} ({{ box.logo_url }})</a></div>
-    {% endfor %}
-{% else %}
-    <p>No boxes are available.</p>
-{% endif %}
+<div class="body">
+    <h1><u>Salty Journey</u></h1>
+    <h2>A Grand Foray</h2>
+    In which Alex struggs his way through Django.
+    <h4>By Alex Ball</h4>
+    <a href="http://www.alexball.name">alexball.name</a>
+    {% if boxes %}
+        <ul>
+        {% for box in boxes %}
+            <li><a href="{{ box.link_url }}">{{ box.name}} ({{ box.link_url }})</a></li>
+        {% endfor %}
+        </ul>
+        {% for box in boxes %}
+            <div class="box">
+                <a href="{{ box.link_url }}">
+                    <img src="{{ box.logo_url }}">
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No boxes are available.</p>
+    {% endif %}
+</div>
