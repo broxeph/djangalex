@@ -1,5 +1,6 @@
 body {
     background-image: url("https://d13pix9kaak6wt.cloudfront.net/background/alexball_1323457018_74.jpg");
+    font-family: "Times New Roman", serif;
 }
 
 .content {
@@ -39,6 +40,10 @@ a {
     vertical-align: bottom;
 }
 
+.box img:hover {
+    opacity: 0.5;
+}
+
 .box:hover {
-    opacity: 50%;
+    height: 145px;
 }
