@@ -1,6 +1,6 @@
 body {
     background-image: url("https://d13pix9kaak6wt.cloudfront.net/background/alexball_1323457018_74.jpg");
-    font-family: "Times New Roman", serif;
+    font-family: proxima-nova;
 }
 
 .content {
@@ -12,7 +12,13 @@ body {
 }
 
 h1 {
-    font-size: 48px;
+    font-size: 64px;
+    font-weight: lighter;
+}
+
+h2 {
+    font-size:24px;
+    font-weight: lighter;
 }
 
 a {
