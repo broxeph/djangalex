@@ -1,3 +1,14 @@
 from django.test import TestCase
 
-# Create your tests here.
+from .models import Box
+
+
+class BoxTestCase(TestCase):
+    def setUp(self):
+        Box.objects.create(name='testBox', logo_url='testLogo',
+            link_url='http://example.com', sort_order=0)
+
+    def test_box_something(self):
+        """Testing basic box creation"""
+        testBox = Box.objects.get(name='testBox')
+        self.assertEqual(testBox.name, 'testBox')
