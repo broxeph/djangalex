@@ -12,3 +12,11 @@ class Box(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Quote(models.Model):
+    text = models.CharField(max_length=200)
+    source = models.CharField(max_length=50, null=True)
+
+    def __str__(self):
+        return self.text
