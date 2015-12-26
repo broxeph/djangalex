@@ -1,43 +1,42 @@
+{% extends "base.html" %}
+
 {% load staticfiles %}
-<link rel="stylesheet" href="{% static 'home/home.css' %}">
 
-<script src="https://use.typekit.net/ljz3uhu.js"></script>
-<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
-<div class="content">
-    <div style="height:300px;">
-        <div style="float:left; width:250px;">
-            <img src="https://pbs.twimg.com/profile_images/1635762654/headshot-blurred-small-square-twitter.jpg" style="width:200px; vertical-align:middle; margin-top:50px; border-style:solid; border-width:1px; border-color:gray;">
-        </div>
-        <div style="float:left;">
-            <h1>Alex Ball</h1>
-            <h2>Entrepreneur, coder, shenanigan.</h2>
-            "Live every week like it's Shark Week." -- Tracy Jordan<br />
-            <ul>
-                <li>Today's task: <a href="https://github.com/broxeph/djangalex">Django!</a></li>
-            </ul>
-            <br />
-        </div>
-        <div style="float:right; text-align:right;">
-            <a href="mailto:alex@ameryn.com">alex@ameryn.com</a>
-        </div>
+{% block content %}
+<div style="height:300px;">
+    <div style="float:left; width:250px;">
+        <img src="{% static 'home/headshot.jpg' %}" style="width:200px; vertical-align:middle; margin-top:50px; border-style:solid; border-width:1px; border-color:gray;">
     </div>
-    <div style="clear:both"></div>
-    <div style="text-align:center;">
-        {% if boxes %}
-            </ul>
-            {% for box in boxes %}
-                <div class="box">
-                    <a href="{{ box.link_url }}">
-                        <img src="{{ box.logo_url }}">
-                    </a>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p>No boxes are available.</p>
-        {% endif %}
+    <div style="float:left;">
+        <h1>Alex Ball</h1>
+        <h2>Entrepreneur, coder, shenanigan.</h2>
+        "Live every week like it's Shark Week." -- Tracy Jordan<br />
+        <ul>
+            <li>Today's task: <a href="https://github.com/broxeph/djangalex">Django!</a></li>
+        </ul>
+        <br />
     </div>
-    <div style="text-align:center; font-size:12px; padding-top:10px;">
-        Background photo credit: Alex Ball
+    <div style="float:right; text-align:right;">
+        <a href="mailto:alex@ameryn.com">alex@ameryn.com</a>
     </div>
 </div>
+<div style="clear:both"></div>
+<div style="text-align:center;">
+    {% if boxes %}
+        </ul>
+        {% for box in boxes %}
+            <div class="box">
+                <a href="{{ box.link_url }}">
+                    <img src="{% static box.logo_url_static %}">
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No boxes are available.</p>
+    {% endif %}
+</div>
+<div style="text-align:center; font-size:12px; padding-top:10px;">
+    Background photo credit: Alex Ball
+</div>
+{% endblock %}

@@ -1,5 +1,5 @@
 body {
-    background-image: url("https://d13pix9kaak6wt.cloudfront.net/background/alexball_1323457018_74.jpg");
+    background-image: url("level15.jpg");
     font-family: proxima-nova;
 }
 
@@ -37,6 +37,7 @@ a {
     box-shadow: 3px 3px 5px #888888;
     vertical-align: middle;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 .box img {
