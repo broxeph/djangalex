@@ -1,0 +1,25 @@
+body {
+    font-family: proxima-nova;
+}
+
+.content {
+    width: 800px;
+    margin: 10px auto 10px auto;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: rgb(240, 240, 240);
+}
+
+h1 {
+    font-size: 64px;
+    font-weight: lighter;
+}
+
+h2 {
+    font-size:24px;
+    font-weight: lighter;
+}
+
+a {
+    color: rgb(60, 60, 255);
+}

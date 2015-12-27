@@ -1,0 +1,17 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" type="image/png" href="{% static 'wineapp/favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'wineapp/wineapp.css' %}">
+    <script src="https://use.typekit.net/ljz3uhu.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+</head>
+
+<body>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
