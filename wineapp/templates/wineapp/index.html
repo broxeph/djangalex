@@ -2,7 +2,9 @@
 
 {% block content %}
 <div>
-    wineapp yay<br />
-    <a href="{% url 'wineapp:review_list' %}">Review list</a>
+    <h1>Heeeeere's WineApp!</h1>
+    <div class="review_list">
+        {% include 'wineapp/review_list.html' %}
+    </div>
 </div>
 {% endblock %}

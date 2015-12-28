@@ -1,16 +1,13 @@
-{% extends "wineapp/base.html" %}
-
-{% block content %}
 <h2>Latest reviews</h2>
 
 {% if latest_review_list %}
 <div>
     {% for review in latest_review_list %}
     <div>
-        <h4><a href="{% url 'reviews:review_detail' review.id %}">
+        <h4><a href="{% url 'wineapp:review_detail' review.id %}">
         {{ review.wine.name }}
         </a></h4>
-        <h6>rate {{ review.rating }} of 5 by {{ review.user_name }}</h6>
+        <h6>Rated {{ review.rating }} of 5 by {{ review.user_name }}</h6>
         <p>{{ review.comment }}</p>
     </div>
     {% endfor %}
@@ -18,4 +15,3 @@
 {% else %}
 <p>No reviews are available.</p>
 {% endif %}
-{% endblock %}
