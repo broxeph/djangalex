@@ -25,6 +25,10 @@ a {
     color: rgb(60, 60, 255);
 }
 
+a:hover {
+    color: rgb(100, 100, 255);
+}
+
 .box {
     background-color: white;
     box-shadow: 3px 3px 5px #888888;

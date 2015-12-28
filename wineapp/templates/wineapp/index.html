@@ -1,10 +1,8 @@
 {% extends "wineapp/base.html" %}
 
-{% load staticfiles %}
-
-
 {% block content %}
 <div>
-    wineapp yay
+    wineapp yay<br />
+    <a href="{% url 'wineapp:review_list' %}">Review list</a>
 </div>
 {% endblock %}
