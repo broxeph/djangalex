@@ -1,0 +1,21 @@
+{% extends 'wineapp/base.html' %}
+
+{% block title %}Wine list{% endblock %}
+
+{% block content %}
+{% if wine_list %}
+<div>
+    {% for wine in wine_list %}
+    <div>
+        <h2><a href="{% url 'wineapp:wine_detail' wine.id %}">
+        {{ wine.name }}
+        </a></h2>
+        <h5>{{ wine.review_set.count }} reviews</h5>
+        <h5>{{ wine.average_rating | floatformat }} average rating</h5>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+    <p>No wines are available.</p>
+{% endif %}
+{% endblock %}
