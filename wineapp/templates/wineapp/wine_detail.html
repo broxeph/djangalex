@@ -1,7 +1,8 @@
 {% extends "wineapp/base.html" %}
 
+{% block title %}{{ wine.name }}{% endblock %}
+
 {% block content %}
-<h2>{{ wine.name }}</h2>
 <h5>{{ wine.review_set.count }} reviews (Average rating: {{ wine.average_rating | floatformat }})</h5>
 
 <h3>Recent reviews</h3>
@@ -21,4 +22,13 @@
 {% else %}
 <p>No reviews for this wine yet.</p>
 {% endif %}
+
+<h3>Add your review</h3>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{%url 'wineapp:add_review' wine.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add" />
+</form>
 {% endblock %}

@@ -32,7 +32,9 @@ def wine_list(request):
 
 def wine_detail(request, wine_id):
     wine = get_object_or_404(Wine, pk=wine_id)
-    return render(request, 'wineapp/wine_detail.html', {'wine': wine})
+    form = ReviewForm()
+    return render(
+        request, 'wineapp/wine_detail.html', {'wine': wine, 'form': form})
 
 
 def add_review(request, wine_id):
@@ -46,8 +48,8 @@ def add_review(request, wine_id):
         review.comment = form.cleaned_data['comment']
         review.pub_date = datetime.datetime.now()
         review.save()
-        return HttpResponseRedirect(reverse('reviews:wine_detail', args=(
-            wine.id,)))
+        return HttpResponseRedirect(
+            reverse('wineapp:wine_detail', args=(wine.id,)))
 
-    return render(request, 'wineapp/wine_detail.html', {
-        'wine': wine, 'form': form})
+    return render(
+        request, 'wineapp/wine_detail.html', {'wine': wine, 'form': form})

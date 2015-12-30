@@ -11,7 +11,23 @@
 </head>
 
 <body>
-    <div class="content">
-        {% block content %}{% endblock %}
+    <div class="base">
+        <nav>
+            <div>
+                <a href="{% url 'wineapp:index' %}">WineApp!</a>
+            </div>
+            <div id="navbar">
+                <ul>
+                    <li><a href="{% url 'wineapp:wine_list' %}">Wine List</a></li>
+                    <li><a href="{% url 'wineapp:index' %}">Home</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <h1>{% block title %}(no title){% endblock %}</h1>
+
+        <div>
+            {% block content %}(no content){% endblock %}
+        </div>
     </div>
 </body>

@@ -4,7 +4,7 @@
 <div>
     {% for review in latest_review_list %}
     <div>
-        <h4><a href="{% url 'wineapp:review_detail' review.id %}">
+        <h4><a href="{% url 'wineapp:wine_detail' review.wine.id %}">
         {{ review.wine.name }}
         </a></h4>
         <h6>Rated {{ review.rating }} of 5 by {{ review.user_name }}</h6>
