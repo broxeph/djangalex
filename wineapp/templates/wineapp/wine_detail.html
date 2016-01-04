@@ -1,17 +1,19 @@
 {% extends "wineapp/base.html" %}
+{% load bootstrap3 %}
 
-{% block title %}{{ wine.name }}{% endblock %}
+{% block title %}
+<h2>{{ wine.name }}</h2>
+<h5>{{ wine.review_set.count }} reviews (Average rating: {{ wine.average_rating | floatformat }})</h5>
+{% endblock %}
 
 {% block content %}
-<h5>{{ wine.review_set.count }} reviews (Average rating: {{ wine.average_rating | floatformat }})</h5>
-
 <h3>Recent reviews</h3>
 
 {% if wine.review_set.all %}
-<div>
+<div class="row">
     {% for review in wine.review_set.all %}
-    <div>
-        <em>{{ review.comment}}</em>
+    <div class="col-xs-6 col-lg-4">
+        <em>{{ review.comment }}</em>
         <h6>Rated {{ review.rating }} of 5 by {{ review.user_name }}</h6>
         <h5><a href="{% url 'wineapp:review_detail' review.id %}">
         Read more
@@ -20,15 +22,19 @@
     {% endfor %}
 </div>
 {% else %}
-<p>No reviews for this wine yet.</p>
+<p>No reviews for this wine yet</p>
 {% endif %}
 
 <h3>Add your review</h3>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{%url 'wineapp:add_review' wine.id %}" method="post">
+<form action="{% url 'wineapp:add_review' wine.id %}" method="post" class="form">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Add" />
+    {% bootstrap_form form layout='inline' %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">
+        {% bootstrap_icon "star" %} Add
+    </button>
+    {% endbuttons %}
 </form>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'wineapp/base.html' %}
 
 {% block title %}
-<a href="{% url 'wineapp:wine_detail' review.wine.id %}">{{ review.wine.name }}</a>
+<h2><a href="{% url 'wineapp:wine_detail' review.wine.id %}">{{ review.wine.name }}</a></h2>
 {% endblock %}
 
 {% block content %}

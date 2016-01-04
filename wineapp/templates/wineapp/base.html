@@ -1,7 +1,9 @@
 {% load staticfiles %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% load bootstrap3 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
 <head>
     <link rel="shortcut icon" type="image/png" href="{% static 'wineapp/favicon.ico' %}"/>
@@ -10,24 +12,24 @@
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>
 
-<body>
-    <div class="base">
-        <nav>
-            <div>
-                <a href="{% url 'wineapp:index' %}">WineApp!</a>
-            </div>
-            <div id="navbar">
-                <ul>
-                    <li><a href="{% url 'wineapp:wine_list' %}">Wine List</a></li>
-                    <li><a href="{% url 'wineapp:index' %}">Home</a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <h1>{% block title %}(no title){% endblock %}</h1>
-
-        <div>
-            {% block content %}(no content){% endblock %}
+{% block bootstrap3_content %}
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'wineapp:index' %}">WineApp!</a>
         </div>
-    </div>
-</body>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'wineapp:wine_list' %}">Wine List</a></li>
+                <li><a href="{% url 'wineapp:index' %}">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1>{% block title %}(no title){% endblock %}</h1>
+
+    {% bootstrap_messages %}
+
+    {% block content %}(no content){% endblock %}
+</div>
+{% endblock %}
