@@ -21,4 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('home.urls', namespace='home')),
     url(r'^wineapp/', include('wineapp.urls', namespace='wineapp')),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls', namespace='auth')),
 ]

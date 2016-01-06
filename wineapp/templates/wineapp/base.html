@@ -2,15 +2,20 @@
 
 {% load bootstrap3 %}
 
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="{% static 'wineapp/favicon.ico' %}"/>
     <link rel="stylesheet" href="{% static 'wineapp/wineapp.css' %}">
     <script src="https://use.typekit.net/ljz3uhu.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
 {% block bootstrap3_content %}
 <div class="container">
@@ -23,6 +28,15 @@
                 <li><a href="{% url 'wineapp:wine_list' %}">Wine List</a></li>
                 <li><a href="{% url 'wineapp:index' %}">Home</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'wineapp:user_review_list' user.username %}">Hello {{ user.username }}!</a></li>
+                <li><a href="{% url 'auth:logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'auth:login' %}">Login</a></li>
+                <li><a href="/accounts/register">Register</a></li>
+                {% endif %}
+            </ul>
         </div>
     </nav>
 
@@ -33,3 +47,4 @@
     {% block content %}(no content){% endblock %}
 </div>
 {% endblock %}
+</html>

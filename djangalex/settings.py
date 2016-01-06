@@ -30,16 +30,22 @@ except ImportError:
 # Application definition
 
 INSTALLED_APPS = [
-    'home.apps.HomeConfig',
-    'wineapp.apps.WineappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'registration',
     'bootstrap3',
+    'home.apps.HomeConfig',
+    'wineapp.apps.WineappConfig',
 ]
+
+SITE_ID = 1  # registration package compatibility?
+ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window
+REGISTRATION_AUTO_LOGIN = True  # Automatically log the user in.
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,10 +60,12 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'djangalex.urls'
 
+LOGIN_REDIRECT_URL = '/wineapp/review/user'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,6 +138,7 @@ STATICFILES_DIRS = (
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 
 try:
     from djangalex.local_settings import *

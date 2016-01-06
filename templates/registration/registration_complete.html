@@ -1,0 +1,18 @@
+{% extends 'wineapp/base.html' %}
+{% load bootstrap3 %}
+
+
+{% block title %}
+<h2>Register</h2>
+{% endblock %}
+
+{% block content %}
+<p>Thanks for registering!</p>
+<form action="{% url 'wineapp:index' %}">
+{% buttons %}
+    <button type="submit" class="btn btn-primary">
+      {% bootstrap_icon "home" %} Now go home!
+    </button>
+{% endbuttons %}
+</form>
+{% endblock %}
