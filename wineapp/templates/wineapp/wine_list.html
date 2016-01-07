@@ -13,7 +13,9 @@
         {{ wine.name }}
         </a></h4>
         <h5>{{ wine.review_set.count }} reviews</h5>
+        {% if wine.average_rating %}
         <h5>{{ wine.average_rating | floatformat }} average rating</h5>
+        {% endif %}
     </div>
     {% endfor %}
 </div>

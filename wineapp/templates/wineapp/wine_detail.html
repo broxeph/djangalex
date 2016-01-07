@@ -3,7 +3,12 @@
 
 {% block title %}
 <h2>{{ wine.name }}</h2>
-<h5>{{ wine.review_set.count }} reviews (Average rating: {{ wine.average_rating | floatformat }})</h5>
+<h5>
+    {{ wine.review_set.count }} reviews
+    {% if wine.review_set.all %}
+     (Average rating: {{ wine.average_rating | floatformat }})
+    {% endif %}
+</h5>
 {% endblock %}
 
 {% block content %}

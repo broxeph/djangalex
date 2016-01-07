@@ -7,8 +7,11 @@ class Wine(models.Model):
     name = models.CharField(max_length=200)
 
     def average_rating(self):
-        all_ratings = map(lambda x: x.rating, self.review_set.all())
-        return statistics.mean(all_ratings)
+        if self.review_set.all():
+            all_ratings = map(lambda x: x.rating, self.review_set.all())
+            return statistics.mean(all_ratings)
+        else:
+            return None
 
     def __str__(self):
         return self.name
