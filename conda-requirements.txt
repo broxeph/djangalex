@@ -1,3 +1,2 @@
 scipy==0.16.1
 scikit-learn==0.17
-sklearn==0.0
