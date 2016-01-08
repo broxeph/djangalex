@@ -31,6 +31,7 @@
             <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
                 <li><a href="{% url 'wineapp:user_review_list' user.username %}">Hello {{ user.username }}!</a></li>
+                <li><a href="{% url 'wineapp:user_recommendation_list' %}">Wine suggestions</a></li>
                 <li><a href="{% url 'auth:logout' %}">Logout</a></li>
                 {% else %}
                 <li><a href="{% url 'auth:login' %}">Login</a></li>

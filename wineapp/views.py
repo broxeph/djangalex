@@ -63,3 +63,10 @@ def user_review_list(request, username=None):
         user_name=username).order_by('-pub_date')
     context = {'latest_review_list': latest_review_list, 'username': username}
     return render(request, 'wineapp/user_review_list.html', context)
+
+
+@login_required
+def user_recommendation_list(request):
+    wine_list = Wine.objects.order_by('-name')
+    return render(request, 'wineapp/user_recommendation_list.html', {
+        'username': request.user.username, 'wine_list': wine_list})
