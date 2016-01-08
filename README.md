@@ -6,6 +6,6 @@ If you're reading this, you're reading the README.md.
 * Improve responsive text sizing
 
 # To do: WineApp
-* Improve wine recommendations
+* Create more dummy data for K-means clustering
 * Ensure non-duplicate user emails
 * Write more unit tests!

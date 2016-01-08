@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 
 from .models import Wine, Review, Cluster
 from .forms import ReviewForm
+from .suggestions import update_clusters
 
 
 def index(request):
@@ -51,6 +52,7 @@ def add_review(request, wine_id):
         review.comment = form.cleaned_data['comment']
         review.pub_date = datetime.datetime.now()
         review.save()
+        update_clusters()
         return HttpResponseRedirect(
             reverse('wineapp:wine_detail', args=(wine.id,)))
 
@@ -74,9 +76,14 @@ def user_recommendation_list(request):
         user_name=request.user.username).prefetch_related('wine')
     user_reviews_wine_ids = set(map(lambda x: x.wine.id, user_reviews))
 
-    # Get request user cluster name (just the first one right now)
-    user_cluster_name = User.objects.get(
-        username=request.user.username).cluster_set.first().name
+    # Get request user cluster name
+    try:
+        user_cluster_name = User.objects.get(
+            username=request.user.username).cluster_set.first().name
+    except:  # If no cluster has been assigned for a user, update clusters
+        update_clusters(force_update=True)
+        user_cluster_name = User.objects.get(
+            username=request.user.username).cluster_set.first().name
 
     # Get usernames for other members of the cluster
     user_cluster_other_members = Cluster.objects.get(
