@@ -5,6 +5,7 @@ django-bootstrap3==6.2.2
 git+git://github.com/macropin/django-registration.git
 django-toolbelt==0.0.1
 gunicorn==19.4.1
+numpy==1.10.4
 pandas==0.17.1
 psycopg2==2.6.1
 python-dateutil==2.4.2
