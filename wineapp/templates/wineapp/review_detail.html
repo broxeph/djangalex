@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<h4>Rated {{ review.rating }} of 5 by {{ review.user_name }}</h4>
+<h4>Rated {{ review.rating }} of 5 by <a href="{% url 'wineapp:user_review_list' review.user_name %}">{{ review.user_name }}</a></h4>
 <h5>{{ review.pub_date }}</h5>
 <p>{{ review.comment }}</p>
 {% endblock %}
