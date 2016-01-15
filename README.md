@@ -8,4 +8,4 @@ If you're reading this, you're reading the README.md.
 # To do: WineApp
 * Add new wines, reviews
 * Ensure non-duplicate user emails
-* Write more unit tests!
+* Test logged-in user wine recommendations

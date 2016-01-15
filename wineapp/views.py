@@ -82,10 +82,10 @@ def user_recommendation_list(request):
         user_name=request.user.username).prefetch_related('wine')
     user_reviews_wine_ids = set(map(lambda x: x.wine.id, user_reviews))
 
-    # Then get a wine list including the previous IDs
+    # Get a wine list including the previous IDs, sorted by descending rating
     wine_list = sorted(
         list(Wine.objects.exclude(id__in=user_reviews_wine_ids)),
-        key=lambda x: x.average_rating,
+        key=lambda x: x.average_rating(),
         reverse=True
     )
 
