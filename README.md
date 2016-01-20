@@ -8,4 +8,4 @@ If you're reading this, you're reading the README.md.
 
 # To do: WineApp
 * Add pictures to wines
-* Test logged-in user wine recommendations
+* Add tests for logged-in user wine recommendations

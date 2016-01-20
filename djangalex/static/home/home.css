@@ -1,6 +1,5 @@
 body {
     background-image: url("level15.jpg");
-    font-family: proxima-nova;
 }
 
 .content {
@@ -9,24 +8,48 @@ body {
     padding: 10px;
     background: rgba(0, 0, 0, 0.5);
     color: rgb(240, 240, 240);
+    font-family: proxima-nova, sans-serif;
 }
 
-h1 {
+.title {
     font-size: 64px;
     font-weight: lighter;
 }
 
-h2 {
+.headshot {
+    float: left;
+    margin: 30px;
+    width: 200px;
+    vertical-align: middle;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+}
+
+.subtitle {
     font-size:24px;
     font-weight: lighter;
+    margin-top: 30px;
 }
 
-a {
-    color: rgb(60, 60, 255);
+.quote {
+    font-size: 16px;
+    margin-top: 20px;
 }
 
-a:hover {
+.email .glyphicon {
     color: rgb(100, 100, 255);
+    margin-left: 5px;
+    margin-right: 5px;
+    vertical-align: text-top;
+}
+
+.header a {
+    color: rgb(100, 100, 255);
+}
+
+.header a:hover {
+    color: rgb(140, 140, 255);
 }
 
 .box {
@@ -54,6 +77,7 @@ a:hover {
     width: 144px;
     margin: 13px;
 }
+
 .box img:hover {
     opacity: 0.5;
 }

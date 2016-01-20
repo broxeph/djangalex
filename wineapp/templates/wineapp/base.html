@@ -4,13 +4,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<title>
-    {% if page_title %}
-        {{ page_title }}
-    {% else %}
-        WineApp
-    {% endif %}
-</title>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,6 +12,13 @@
     <link rel="stylesheet" href="{% static 'wineapp/wineapp.css' %}">
     <script src="https://use.typekit.net/ljz3uhu.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <title>
+    {% if page_title %}
+        {{ page_title }}
+    {% else %}
+        WineApp
+    {% endif %}
+    </title>
 </head>
 
 {% bootstrap_css %}
