@@ -21,26 +21,22 @@
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>
 
-<div class="content">
-    <div class="header">
-        <div>
+<div class="container content">
+    <div class="row header">
+        <div class="col-md-4">
             <img src="{% static 'home/headshot.jpg' %}" class="headshot">
         </div>
-        <div style="float:left; width:380px;">
+        <div class="col-md-6">
             <h1 class="title">Alex Ball</h1>
-            <h2 class="subtitle">Entrepreneur, coder, shenanigan.</h2>
-            <p class="quote">
-                "{{ quote.text }}" -- {{ quote.source }}
-            </p>
+            <h3 class="subtitle">Entrepreneur, coder, shenanigan.</h3>
+            <p class="quote">"{{ quote.text }}" -- {{ quote.source }}</p>
             <p class="email">
                 <a href="mailto:alex@ameryn.com">{% bootstrap_icon "envelope" %}alex@ameryn.com</a>
             </p>
         </div>
     </div>
-    <div style="clear:both"></div>
-    <div style="text-align:center;">
+    <div class="row boxes">
         {% if boxes %}
-            </ul>
             {% for box in boxes %}
                 <div class="box">
                     <a href="{{ box.link_url }}">
@@ -48,11 +44,9 @@
                     </a>
                 </div>
             {% endfor %}
-        {% else %}
-            <p>No boxes are available.</p>
         {% endif %}
     </div>
-    <div style="text-align:center; font-size:12px; padding-top:10px;">
+    <div class="footnote">
         Background photo credit: Alex Ball
     </div>
 </div>

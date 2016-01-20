@@ -1,9 +1,10 @@
 body {
     background-image: url("level15.jpg");
+    background-repeat: repeat;
 }
 
 .content {
-    width: 800px;
+    max-width: 800px;
     margin: 10px auto 10px auto;
     padding: 10px;
     background: rgba(0, 0, 0, 0.5);
@@ -12,22 +13,19 @@ body {
 }
 
 .title {
-    font-size: 64px;
+    font-size: 5em;
     font-weight: lighter;
 }
 
 .headshot {
-    float: left;
     margin: 30px;
     width: 200px;
-    vertical-align: middle;
     border-style: solid;
     border-width: 1px;
     border-color: gray;
 }
 
 .subtitle {
-    font-size:24px;
     font-weight: lighter;
     margin-top: 30px;
 }
@@ -67,6 +65,11 @@ body {
     display: inline-block;
 }
 
+.boxes {
+    text-align: center;
+    margin-top: 20px;
+}
+
 .box img {
     height: 100%;
     width: 100%;
@@ -80,4 +83,10 @@ body {
 
 .box img:hover {
     opacity: 0.5;
+}
+
+.footnote {
+    text-align: center;
+    font-size: 12px;
+    padding-top: 10px;
 }
