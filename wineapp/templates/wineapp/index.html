@@ -5,6 +5,9 @@ WineApp!
 {% endblock %}
 
 {% block content %}
-News and announcements here! Or something.
+<div class="row">
+    This is (supposed to be) a wine review and recommendation app.
+</div>
+{% include 'wineapp/news_block.html' %}
 {% include 'wineapp/review_list_block.html' %}
 {% endblock %}

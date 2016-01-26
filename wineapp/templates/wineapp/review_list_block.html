@@ -1,6 +1,5 @@
 <h2>Latest reviews</h2>
 
-{% block content %}
 {% if latest_review_list %}
 <div class="row">
     {% for review in latest_review_list %}
@@ -16,4 +15,3 @@
 {% else %}
 <p>No reviews are available.</p>
 {% endif %}
-{% endblock %}

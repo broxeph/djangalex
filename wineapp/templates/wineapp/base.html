@@ -26,7 +26,7 @@
 
 {% block bootstrap3_content %}
 <div class="container">
-    <nav class="navbar navbar-default navbar-wineapp">
+    <nav class="navbar navbar-default">
         <div class="navbar-header">
             <a class="navbar-brand" href="{% url 'wineapp:index' %}">{% bootstrap_icon "glass" %} WineApp!</a>
         </div>
@@ -48,8 +48,10 @@
         </div>
     </nav>
 
-    <h1>{% block title %}{% endblock %}</h1>
-
+    <div class="row">
+        <h1>{% block title %}{% endblock %}</h1>
+    </div>
+    
     {% bootstrap_messages %}
 
     {% block content %}(no content){% endblock %}
