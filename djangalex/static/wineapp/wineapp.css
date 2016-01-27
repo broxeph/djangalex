@@ -1,10 +1,10 @@
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 .content {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 .footer {
@@ -16,9 +16,21 @@ html {
 }
 
 .footer .container {
-  padding: 0 15px 0 15px;
+    padding: 0 15px 0 15px;
 }
 
 .footer .text-muted {
-  margin: 10px 0;
+    margin: 10px 0;
+}
+
+.wineapp-logo {
+    box-shadow: 3px 3px 5px #888888;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    border-radius: 10px;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    float: right;
 }

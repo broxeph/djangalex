@@ -1,5 +1,7 @@
 {% extends 'wineapp/base.html' %}
 
+{% load staticfiles %}
+
 {% block title %}
 WineApp!
 {% endblock %}
@@ -7,6 +9,7 @@ WineApp!
 {% block content %}
 <div class="row">
     <div class="col-xs-12">
+        <img src="{% static 'home/wineapp.png' %}" class="wineapp-logo">
         This is (supposed to be) a wine review and recommendation app, built with Django on Heroku. Its creator thoroughly disclaims all responsibility and/or damages caused while said creator looks on in horrified fascination.
     </div>
 </div>
