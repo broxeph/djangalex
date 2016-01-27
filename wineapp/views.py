@@ -6,13 +6,14 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-from .models import Wine, Review
+from .models import Wine, Review, Post
 from .forms import ReviewForm
 
 
 def index(request):
     latest_review_list = Review.objects.order_by('-pub_date')[:9]
-    context = {'latest_review_list': latest_review_list}
+    posts = Post.objects.order_by('-pub_date')[:4]
+    context = {'latest_review_list': latest_review_list, 'posts': posts}
     return render(request, 'wineapp/index.html', context)
 
 

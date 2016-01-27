@@ -1,7 +1,6 @@
 import statistics
 
 from django.db import models
-from django.contrib.auth.models import User
 
 
 class Wine(models.Model):
@@ -31,3 +30,10 @@ class Review(models.Model):
     user_name = models.CharField(max_length=100)
     comment = models.CharField(max_length=200)
     rating = models.IntegerField(choices=RATING_CHOICES)
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=100)
+    text = models.TextField(max_length=1000)
+    pub_date = models.DateTimeField('date published')
+    user_name = models.CharField(max_length=200)

@@ -6,12 +6,20 @@ WineApp!
 
 {% block content %}
 <div class="row">
-    This is (supposed to be) a wine review and recommendation app.
+    <div class="col-xs-12">
+        This is (supposed to be) a wine review and recommendation app, built with Django on Heroku. Its creator thoroughly disclaims all responsibility and/or damages caused while said creator looks on in horrified fascination.
+    </div>
 </div>
 <div class="row">
-    {% include 'wineapp/news_block.html' %}
+    <div class="col-xs-12">
+        <h2>Shouts and Rumors</h2>
+        {% include 'wineapp/news_block.html' %}
+    </div>
 </div>
 <div class="row">
-    {% include 'wineapp/review_list_block.html' %}
+    <div class="col-xs-12">
+        <h2>Latest reviews</h2>
+        {% include 'wineapp/review_list_block.html' %}
+    </div>
 </div>
 {% endblock %}
