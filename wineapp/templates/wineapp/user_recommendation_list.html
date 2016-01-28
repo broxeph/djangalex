@@ -1,6 +1,12 @@
-{% extends 'wineapp/wine_list.html' %}
+{% extends 'wineapp/base.html' %}
 
-{% block title %}
-<h2>Recommendations for {{ username }}</h2>
-<h5>Unreviewed wines, sorted by descending rating.</h5>
+{% block content %}
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Recommendations for {{ username }}</h1>
+        <h5>Unreviewed wines, sorted by descending rating.</h5>
+        <br/>
+    </div>
+</div>
+{% include 'wineapp/wine_list_block.html' %}
 {% endblock %}

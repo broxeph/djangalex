@@ -1,5 +1,10 @@
-{% extends 'wineapp/review_list.html' %}
+{% extends 'wineapp/base.html' %}
 
-{% block title %}
-<h2>Reviews by {{ username }}</h2>
+{% block content %}
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Reviews by {{ username }}</h1>
+    </div>
+</div>
+{% include 'wineapp/review_list_block.html' %}
 {% endblock %}

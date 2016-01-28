@@ -12,7 +12,7 @@ class Wine(models.Model):
             all_ratings = map(lambda x: x.rating, self.review_set.all())
             return statistics.mean(all_ratings)
         else:
-            return None
+            return 0
 
     def __str__(self):
         return self.name
