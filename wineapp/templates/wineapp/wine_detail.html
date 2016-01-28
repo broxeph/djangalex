@@ -1,17 +1,25 @@
 {% extends "wineapp/base.html" %}
+
+{% load staticfiles %}
 {% load bootstrap3 %}
 
-{% block title %}
-<h2>{{ wine.name }}</h2>
-<h5>
-    {{ wine.review_set.count }} reviews
-    {% if wine.review_set.all %}
-     (Average rating: {{ wine.average_rating | floatformat }})
-    {% endif %}
-</h5>
-{% endblock %}
-
 {% block content %}
+<div class="row">
+    <div class="col-xs-12">
+        <img src="{% static 'wineapp/wine-image.png' %}" class="wine-img-lg">
+        <h2>{{ wine.name }}</h2>
+        <h5>
+            {% if wine.review_set.count == 1 %}
+            {{ wine.review_set.count }} review
+            {% else %}
+            {{ wine.review_set.count }} reviews
+            {% endif %}
+            {% if wine.review_set.all %}
+             (Average rating: {{ wine.average_rating | floatformat }})
+            {% endif %}
+    </div>
+</div>
+
 <h3>Recent reviews</h3>
 
 {% if wine.review_set.all %}

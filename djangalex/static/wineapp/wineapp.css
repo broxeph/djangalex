@@ -34,3 +34,15 @@ html {
     margin: 10px;
     float: right;
 }
+
+.wine-img-md {
+    width: 80px;
+    height: 80px;
+    float: right;
+}
+
+.wine-img-lg {
+    width: 200px;
+    height: 200px;
+    float: right;
+}

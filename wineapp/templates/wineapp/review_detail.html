@@ -1,11 +1,15 @@
 {% extends 'wineapp/base.html' %}
 
-{% block title %}
-<h2><a href="{% url 'wineapp:wine_detail' review.wine.id %}">{{ review.wine.name }}</a></h2>
-{% endblock %}
+{% load staticfiles %}
 
 {% block content %}
-<h4>Rated {{ review.rating }} of 5 by <a href="{% url 'wineapp:user_review_list' review.user_name %}">{{ review.user_name }}</a></h4>
-<h5>{{ review.pub_date }}</h5>
-<p>{{ review.comment }}</p>
+<div class="row">
+    <div class="col-xs-12">
+        <img src="{% static 'wineapp/wine-image.png' %}" class="wine-img-lg">
+        <h2><a href="{% url 'wineapp:wine_detail' review.wine.id %}">{{ review.wine.name }}</a></h2>
+        <h4>Rated {{ review.rating }} of 5 by <a href="{% url 'wineapp:user_review_list' review.user_name %}">{{ review.user_name }}</a></h4>
+        <h5>{{ review.pub_date }}</h5>
+        <p>{{ review.comment }}</p>
+    </div>
+</div>
 {% endblock %}

@@ -1,18 +1,27 @@
 {% extends 'wineapp/base.html' %}
 
-{% block title %}
-<h2>Wine list</h2>
-{% endblock %}
+{% load staticfiles %}
 
 {% block content %}
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Wine list</h1>
+    </div>
+</div>
+
 {% if wine_list %}
 <div class="row">
     {% for wine in wine_list %}
     <div class="col-xs-6 col-lg-4">
+        <img src="{% static 'wineapp/wine-image.png' %}" class="wine-img-md">
         <h4><a href="{% url 'wineapp:wine_detail' wine.id %}">
         {{ wine.name }}
         </a></h4>
+        {% if wine.review_set.count == 1 %}
+        <h5>{{ wine.review_set.count }} review</h5>
+        {% else %}
         <h5>{{ wine.review_set.count }} reviews</h5>
+        {% endif %}
         {% if wine.average_rating %}
         <h5>{{ wine.average_rating | floatformat }} average rating</h5>
         {% endif %}

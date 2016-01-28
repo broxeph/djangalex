@@ -1,6 +1,9 @@
+{% load staticfiles %}
+
 {% if latest_review_list %}
 {% for review in latest_review_list %}
 <div class="col-sm-6 col-lg-4">
+    <img src="{% static 'wineapp/wine-image.png' %}" class="wine-img-md">
     <h4><a href="{% url 'wineapp:review_detail' review.id %}">
     {{ review.wine.name }}
     </a></h4>

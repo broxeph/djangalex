@@ -2,11 +2,12 @@
 
 {% load staticfiles %}
 
-{% block title %}
-WineApp!
-{% endblock %}
-
 {% block content %}
+<div class="row">
+    <div class="col-xs-12">
+        <h1>WineApp!</h1>
+    </div>
+</div>
 <div class="row">
     <div class="col-xs-12">
         <img src="{% static 'home/wineapp.png' %}" class="wineapp-logo">
@@ -15,7 +16,7 @@ WineApp!
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <h2>Shouts and Murmurs</h2>
+        <h2>Shouts &amp; Murmurs</h2>
         {% include 'wineapp/news_block.html' %}
     </div>
 </div>
