@@ -13,7 +13,11 @@
 <div class="row">
     {% for wine in wine_list %}
     <div class="col-xs-6 col-lg-4">
+        {% if wine.image %}
+        <img src="{{ wine.image.url }}" class="wine-img-md">
+        {% else %}
         <img src="{% static 'wineapp/wine-image.png' %}" class="wine-img-md">
+        {% endif %}
         <h4><a href="{% url 'wineapp:wine_detail' wine.id %}">
         {{ wine.name }}
         </a></h4>

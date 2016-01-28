@@ -3,7 +3,11 @@
 {% if latest_review_list %}
 {% for review in latest_review_list %}
 <div class="col-sm-6 col-lg-4">
+    {% if review.wine.image %}
+    <img src="{{ review.wine.image.url }}" class="wine-img-md">
+    {% else %}
     <img src="{% static 'wineapp/wine-image.png' %}" class="wine-img-md">
+    {% endif %}
     <h4><a href="{% url 'wineapp:review_detail' review.id %}">
     {{ review.wine.name }}
     </a></h4>

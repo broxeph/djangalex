@@ -5,7 +5,11 @@
 {% block content %}
 <div class="row">
     <div class="col-xs-12">
+        {% if review.wine.image %}
+        <img src="{{ review.wine.image.url }}" class="wine-img-lg">
+        {% else %}
         <img src="{% static 'wineapp/wine-image.png' %}" class="wine-img-lg">
+        {% endif %}
         <h2><a href="{% url 'wineapp:wine_detail' review.wine.id %}">{{ review.wine.name }}</a></h2>
         <h4>Rated {{ review.rating }} of 5 by <a href="{% url 'wineapp:user_review_list' review.user_name %}">{{ review.user_name }}</a></h4>
         <h5>{{ review.pub_date }}</h5>
