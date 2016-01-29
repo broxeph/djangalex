@@ -14,7 +14,7 @@
             {{ wine.name }}
         </a></h4>
         {% if wine.variety %}
-            <h5>{{ wine.variety }}</h5>
+            <p>{{ wine.variety }}</p>
         {% endif %}
         {% if wine.review_set.count == 1 %}
             <h5>{{ wine.review_set.count }} review</h5>
