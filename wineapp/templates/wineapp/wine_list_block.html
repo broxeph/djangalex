@@ -11,8 +11,11 @@
             {% endif %}
         </a>
         <h4><a href="{% url 'wineapp:wine_detail' wine.id %}">
-        {{ wine.name }}
+            {{ wine.name }}
         </a></h4>
+        {% if wine.variety %}
+            <h5>{{ wine.variety }}</h5>
+        {% endif %}
         {% if wine.review_set.count == 1 %}
             <h5>{{ wine.review_set.count }} review</h5>
         {% else %}
