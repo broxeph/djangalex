@@ -21,26 +21,38 @@
             {% if wine.review_set.all %}
                  (Average rating: {{ wine.average_rating | floatformat }})
             {% endif %}
+        </h5>
+        {% if wine.variety or wine.abv %}
+            <ul>
+                {% if wine.variety %}
+                    <li>{{ wine.variety }}</li>
+                {% endif %}
+                {% if wine.abv %}
+                    <li>{{ wine.abv | floatformat }}% ABV</li>
+                {% endif %}
+            </ul>
+        {% endif %}
+        {% if wine.description %}
+            <p>{{ wine.description }}</p>
+        {% endif %}
     </div>
 </div>
 
 <h3>Recent reviews</h3>
 
-{% if wine.review_set.all %}
 <div class="row">
-    {% for review in wine.review_set.all %}
     <div class="col-xs-6 col-lg-4">
+    {% for review in wine.review_set.all %}
         <em>{{ review.comment }}</em>
         <h6>Rated {{ review.rating }} of 5 by <a href="{% url 'wineapp:user_review_list' review.user_name %}">{{ review.user_name }}</a></h6>
         <h5><a href="{% url 'wineapp:review_detail' review.id %}">
         Read more
         </a></h5>
-    </div>
+    {% empty %}
+        <p>No reviews for this wine yet.</p>
     {% endfor %}
+    </div>
 </div>
-{% else %}
-<p>No reviews for this wine yet</p>
-{% endif %}
 
 <h3>Add your review</h3>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}

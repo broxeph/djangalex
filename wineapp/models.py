@@ -5,7 +5,10 @@ from django.db import models
 
 class Wine(models.Model):
     name = models.CharField(max_length=200)
-    image = models.ImageField(null=True, upload_to='images')
+    image = models.ImageField(null=True, upload_to='images', blank=True)
+    variety = models.CharField(max_length=50, blank=True)
+    abv = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    description = models.TextField(max_length=1000, blank=True)
 
     def average_rating(self):
         if self.review_set.all():
