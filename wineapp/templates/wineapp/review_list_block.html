@@ -1,13 +1,12 @@
 {% load staticfiles %}
 
-{% if latest_review_list %}
 {% for review in latest_review_list %}
 <div class="col-sm-6 col-lg-4">
     <a href="{% url 'wineapp:review_detail' review.id %}">
         {% if review.wine.image %}
-        <img src="{{ review.wine.image.url }}" class="wine-img-md">
+            <img src="{{ review.wine.image.url }}" class="wine-img-md">
         {% else %}
-        <img src="{% static 'wineapp/wine-image.png' %}" class="wine-img-md">
+            <img src="{% static 'wineapp/wine-image.png' %}" class="wine-img-md">
         {% endif %}
     </a>
     <h4><a href="{% url 'wineapp:review_detail' review.id %}">
@@ -16,7 +15,6 @@
     <h6>rated {{ review.rating }} of 5 by <a href="{% url 'wineapp:user_review_list' review.user_name %}">{{ review.user_name }}</a></h6>
     <p>{{ review.comment }}</p>
 </div>
+{% empty %}
+    <p>No reviews are available. Hop to it, private! (<a href="{% url 'wineapp:wine_list' %}">Wine list</a>)</p>
 {% endfor %}
-{% else %}
-<p>No reviews are available. Hop to it, private! (<a href="{% url 'wineapp:wine_list' %}">Wine list</a>)</p>
-{% endif %}

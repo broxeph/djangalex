@@ -17,7 +17,7 @@ import sys
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: don't run with debug turned on in production! #yolo
-DEBUG = True
+DEBUG = False
 
 # Guess you need SECRET_KEY early
 try:

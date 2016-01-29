@@ -7,9 +7,9 @@
     <div class="col-xs-12">
         <a href="{% url 'wineapp:wine_detail' review.wine.id %}">
             {% if review.wine.image %}
-            <img src="{{ review.wine.image.url }}" class="wine-img-lg">
+                <img src="{{ review.wine.image.url }}" class="wine-img-lg">
             {% else %}
-            <img src="{% static 'wineapp/wine-image.png' %}" class="wine-img-lg">
+                <img src="{% static 'wineapp/wine-image.png' %}" class="wine-img-lg">
             {% endif %}
         </a>
         <h2><a href="{% url 'wineapp:wine_detail' review.wine.id %}">{{ review.wine.name }}</a></h2>

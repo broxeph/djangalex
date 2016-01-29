@@ -7,19 +7,19 @@
 <div class="row">
     <div class="col-xs-12">
         {% if wine.image %}
-        <img src="{{ wine.image.url }}" class="wine-img-lg">
+            <img src="{{ wine.image.url }}" class="wine-img-lg">
         {% else %}
-        <img src="{% static 'wineapp/wine-image.png' %}" class="wine-img-lg">
+            <img src="{% static 'wineapp/wine-image.png' %}" class="wine-img-lg">
         {% endif %}
         <h2>{{ wine.name }}</h2>
         <h5>
             {% if wine.review_set.count == 1 %}
-            {{ wine.review_set.count }} review
+                {{ wine.review_set.count }} review
             {% else %}
-            {{ wine.review_set.count }} reviews
+                {{ wine.review_set.count }} reviews
             {% endif %}
             {% if wine.review_set.all %}
-             (Average rating: {{ wine.average_rating | floatformat }})
+                 (Average rating: {{ wine.average_rating | floatformat }})
             {% endif %}
     </div>
 </div>

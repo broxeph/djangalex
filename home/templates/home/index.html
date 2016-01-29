@@ -36,15 +36,13 @@
         </div>
     </div>
     <div class="row boxes">
-        {% if boxes %}
-            {% for box in boxes %}
-                <div class="box">
-                    <a href="{{ box.link_url }}">
-                        <img src="{% static box.logo_url_static %}">
-                    </a>
-                </div>
-            {% endfor %}
-        {% endif %}
+        {% for box in boxes %}
+        <div class="box">
+            <a href="{{ box.link_url }}">
+                <img src="{% static box.logo_url_static %}">
+            </a>
+        </div>
+        {% endfor %}
     </div>
     <div class="footnote text-muted">
         Background photo credit: Alex Ball

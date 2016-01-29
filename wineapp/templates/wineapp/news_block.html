@@ -1,11 +1,9 @@
-{% if posts %}
 {% for post in posts %}
 <div class="col-md-6">
     <h4>{{ post.title }}</h4>
     <h6>By <a href="{% url 'wineapp:user_review_list' post.user_name %}">{{ post.user_name }}</a>, {{ post.pub_date }}</h6>
     <p>{{ post.text }}</p>
 </div>
+{% empty %}
+    <p>No news. Oh well.</p>
 {% endfor %}
-{% else %}
-<p>No news. Oh well.</p>
-{% endif %}
