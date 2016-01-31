@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'home.apps.HomeConfig',
     'wineapp.apps.WineappConfig',
+    'storages',
 ]
 
 SITE_ID = 1  # registration package compatibility?
@@ -136,17 +137,16 @@ STATIC_ROOT = 'staticfiles'
 MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-# Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-
+# Development version? Import local settings
 try:
     from djangalex.local_settings import *
 except ImportError:
-    pass
+    # AWS S3 stuff
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
