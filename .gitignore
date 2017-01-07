@@ -1,6 +1,6 @@
 *.pyc
-/venv/
+/venv/*
 staticfiles
-venv
 *local_settings*
 media/images/*
+/.idea/*

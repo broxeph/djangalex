@@ -23,12 +23,9 @@ DEBUG = False
 try:
     from djangalex.local_settings import SECRET_KEY
 except ImportError:
-    sys.stderr.write("Local settings NOT imported.")
     SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

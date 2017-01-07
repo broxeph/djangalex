@@ -10,5 +10,5 @@ If you're reading this, you're reading the README.md.
 * Add tests for logged-in user wine recommendations
 * Add more wines, populate metadata with the usual junk
 * Serve uploaded wine images with S3
-* Add 'blog archive' thing for Shouts & Murmurs
+* Add 'blog archive' thing for older Shouts & Murmurs posts
 * Shrink larger images, use one-column layout for xs viewports
