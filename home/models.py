@@ -14,9 +14,8 @@ class Box(models.Model):
         return self.name
 
 
-class Quote(models.Model):
+class Subtitle(models.Model):
     text = models.CharField(max_length=200)
-    source = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return self.text
