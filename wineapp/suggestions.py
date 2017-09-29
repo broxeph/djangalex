@@ -3,7 +3,7 @@ from scipy.sparse import dok_matrix, csr_matrix
 import numpy as np
 from sklearn.cluster import KMeans
 
-from .models import Review, Wine, Cluster
+from .models import Review, Cluster
 
 
 def update_clusters(force_update=False):
