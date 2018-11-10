@@ -1,6 +1,4 @@
-{% load staticfiles %}
-
-{% load bootstrap3 %}
+{% load staticfiles bootstrap3 %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,59 +10,61 @@
     <link rel="stylesheet" href="{% static 'wineapp/wineapp.css' %}">
     <script src="https://use.typekit.net/ljz3uhu.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
-    <title>
-    {% if page_title %}
-        {{ page_title }}
-    {% else %}
-        WineApp
-    {% endif %}
-    </title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-21143191-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-21143191-6');
+    </script>
+    <title>{{ page_title|default:'WineApp' }}</title>
 </head>
 
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
 {% block bootstrap3_content %}
-<div class="container content">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#wineNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{% url 'wineapp:index' %}">{% bootstrap_icon "glass" %} WineApp!</a>
+    <div class="container content">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#wineNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'wineapp:index' %}">{% bootstrap_icon "glass" %} WineApp!</a>
+                </div>
+                <div id="wineNavbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'wineapp:index' %}">Home</a></li>
+                        <li><a href="{% url 'wineapp:wine_list' %}">Wine List</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'wineapp:user_review_list' user.username %}">Hello {{ user.username }}!</a></li>
+                        <li><a href="{% url 'wineapp:user_recommendation_list' %}">Wine suggestions</a></li>
+                        <li><a href="{% url 'logout' %}">{% bootstrap_icon "log-in" %} Logout</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">{% bootstrap_icon "log-in" %} Login</a></li>
+                        <li><a href="{% url 'registration_register' %}">{% bootstrap_icon "user" %} Register</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-            <div id="wineNavbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="{% url 'wineapp:index' %}">Home</a></li>
-                    <li><a href="{% url 'wineapp:wine_list' %}">Wine List</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'wineapp:user_review_list' user.username %}">Hello {{ user.username }}!</a></li>
-                    <li><a href="{% url 'wineapp:user_recommendation_list' %}">Wine suggestions</a></li>
-                    <li><a href="{% url 'logout' %}">{% bootstrap_icon "log-in" %} Logout</a></li>
-                    {% else %}
-                    <li><a href="{% url 'login' %}">{% bootstrap_icon "log-in" %} Login</a></li>
-                    <li><a href="{% url 'registration_register' %}">{% bootstrap_icon "user" %} Register</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-    {% bootstrap_messages %}
+        </nav>
 
-    {% block content %}(no content){% endblock %}
-</div>
+        {% bootstrap_messages %}
 
-<footer class="footer">
-  <div class="container">
-    <p class="text-muted">Built with grudging respect in <a href="http://www.buzzfeed.com/eldough/35-ways-you-know-you-are-from-philly-9fj4">Philadelphia</a>.</p>
-  </div>
-</footer>
+        {% block content %}(no content){% endblock %}
+    </div>
 
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Built with grudging respect in <a href="http://www.buzzfeed.com/eldough/35-ways-you-know-you-are-from-philly-9fj4">Philadelphia</a>.</p>
+      </div>
+    </footer>
 {% endblock %}
 </html>

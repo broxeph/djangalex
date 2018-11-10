@@ -6,6 +6,7 @@ If you're reading this, you're reading the README.
 - Base
     - Specify role with `DJANGO_SETTINGS_MODULE`, e.g. `dev.py`
     - Move manual setup to Python script (or better, to Docker!)
+    - Move app templates to base templates directory
 - Home
     - Add dynamic subtitles
         - Founding member, Interesting Times Gang, etc.
