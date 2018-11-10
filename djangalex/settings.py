@@ -3,12 +3,9 @@ import sys
 
 import dj_database_url
 
+DEBUG = os.environ.get('DEBUG', False)
 
-# Guess you need SECRET_KEY early
-try:
-    from djangalex.local_settings import SECRET_KEY
-except ImportError:
-    SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -120,15 +117,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-# Development version? Import local settings
-try:
-    from djangalex.local_settings import *
-except ImportError:
-    # AWS S3 stuff
-    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    DATABASES = {'default': dj_database_url.config()}  # Parse database configuration from $DATABASE_URL
-    DEBUG = False
+# Parse database configuration from $DATABASE_URL
+DATABASES = {'default': dj_database_url.config()}
+
+# S3
+AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']

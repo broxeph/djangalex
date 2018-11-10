@@ -45,10 +45,10 @@
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'wineapp:user_review_list' user.username %}">Hello {{ user.username }}!</a></li>
                     <li><a href="{% url 'wineapp:user_recommendation_list' %}">Wine suggestions</a></li>
-                    <li><a href="{% url 'auth:logout' %}">{% bootstrap_icon "log-in" %} Logout</a></li>
+                    <li><a href="{% url 'logout' %}">{% bootstrap_icon "log-in" %} Logout</a></li>
                     {% else %}
-                    <li><a href="{% url 'auth:login' %}">{% bootstrap_icon "log-in" %} Login</a></li>
-                    <li><a href="/accounts/register">{% bootstrap_icon "user" %} Register</a></li>
+                    <li><a href="{% url 'login' %}">{% bootstrap_icon "log-in" %} Login</a></li>
+                    <li><a href="{% url 'registration_register' %}">{% bootstrap_icon "user" %} Register</a></li>
                     {% endif %}
                 </ul>
             </div>
