@@ -5,6 +5,10 @@ import dj_database_url
 
 DEBUG = os.environ.get('DEBUG', False)
 
+if not DEBUG:
+    ALLOWED_HOSTS = ['.alexball.name']
+    PREPEND_WWW = True
+
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
