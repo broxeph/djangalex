@@ -6,7 +6,7 @@ import dj_database_url
 DEBUG = os.environ.get('DEBUG', False)
 
 if not DEBUG:
-    ALLOWED_HOSTS = ['.alexball.name']
+    ALLOWED_HOSTS = ['.alexball.name', '.ball.lol']
     PREPEND_WWW = True
 
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
