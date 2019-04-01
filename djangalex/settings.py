@@ -3,7 +3,7 @@ import sys
 
 import dj_database_url
 
-DEBUG = os.environ['DEBUG']
+DEBUG = os.environ.get('DEBUG', False)
 
 if DEBUG:
     ALLOWED_HOSTS = ['*']
