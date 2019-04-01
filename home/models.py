@@ -8,7 +8,7 @@ class Box(models.Model):
     sort_order = models.IntegerField(null=True)
 
     def logo_url_static(self):
-        return 'home/' + self.logo_url
+        return "home/" + self.logo_url
 
     def __str__(self):
         return self.name
@@ -16,6 +16,11 @@ class Box(models.Model):
 
 class Subtitle(models.Model):
     text = models.CharField(max_length=200)
+    author = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
-        return self.text
+        value = self.text
+        if self.author:
+            value += f" — {self.author}"
+
+        return value
