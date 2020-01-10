@@ -11,4 +11,3 @@ pandas==0.25.3
 Pillow==7.0.0  # Needed by ImageField
 psycopg2==2.8.4  # Postgres
 static3==0.7.0
--e git://github.com/darklow/django-suit.git@v2#egg=django-suit
