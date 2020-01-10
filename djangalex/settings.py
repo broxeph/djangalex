@@ -8,7 +8,7 @@ DEBUG = os.environ.get('DEBUG', False)
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['.alexball.name', '.ball.lol']
+    ALLOWED_HOSTS = ['.ball.lol']
     PREPEND_WWW = True
 
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']

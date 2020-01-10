@@ -1,14 +1,14 @@
-boto==2.49.0  # AWS S3 for django-storages
+boto3==1.10.50  # AWS S3 for django-storages
 dj-database-url==0.5.0  # DATABASES setting for prod env
 dj-static==0.0.6
-Django==2.2rc1
-django-bootstrap3==11.0.0
-django-extensions==2.1.6
-django-registration-redux==2.5
-django-storages==1.7.1
-gunicorn==19.9.0
-pandas==0.24.2
-Pillow==5.4.1  # Needed by ImageField
-psycopg2-binary==2.7.7  # Postgres
+Django==3.0.2
+django-bootstrap3==12.0.3
+django-extensions==2.2.5
+django-registration-redux==2.7
+django-storages==1.8
+gunicorn==20.0.4
+pandas==0.25.3
+Pillow==7.0.0  # Needed by ImageField
+psycopg2==2.8.4  # Postgres
 static3==0.7.0
 -e git://github.com/darklow/django-suit.git@v2#egg=django-suit
