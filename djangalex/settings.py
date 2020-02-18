@@ -69,10 +69,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djangalex.wsgi.application'
 
-
 # Password validation
-# https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -80,43 +77,47 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'America/New_York'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 # Include jQuery with Bootstrap JavaScript
-BOOTSTRAP3 = {
-    'include_jquery': True,
-}
+BOOTSTRAP3 = {'include_jquery': True}
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Static asset configuration
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
-MEDIA_ROOT = 'media'
-MEDIA_URL = '/media/'
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+if DEBUG:
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+else:
+    # S3/CloudFront
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+    AWS_CLOUDFRONT_DOMAIN = 'd7g0p15isxilq.cloudfront.net'
+
+    # Static asset configuration
+    STATIC_LOCATION = 'static'
+    STATIC_ROOT = f'/{STATIC_LOCATION}/'
+    STATIC_URL = f'//{AWS_CLOUDFRONT_DOMAIN}/{STATIC_LOCATION}/'
+    STATICFILES_STORAGE = 'djangalex.storages.StaticStorage'
+
+    # Media configuration
+    MEDIA_LOCATION = 'media'
+    MEDIA_ROOT = f'/{MEDIA_LOCATION}/'
+    MEDIA_URL = f'//{AWS_CLOUDFRONT_DOMAIN}/{MEDIA_LOCATION}/'
+    DEFAULT_FILE_STORAGE = 'djangalex.storages.MediaStorage'
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'djangalex', 'static'),)
 
 # Parse database configuration from $DATABASE_URL
 DATABASES = {'default': dj_database_url.config()}
-
-# S3
-AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
