@@ -8,13 +8,11 @@ If you're reading this, you're reading the README.
     - Move manual setup to Python script (or better, to Docker!)
     - Move app templates to base templates directory
     - Send error emails
-- Home
-    - Add dynamic subtitles
-        - Founding member, Interesting Times Gang, etc.
+    - Install django-compressor to upload new static files automatically
 - WineApp
     - Add tests for logged-in user wine recommendations
     - Add more wines, populate metadata with the usual junk
-    - Serve uploaded wine images with S3
+    - Serve uploaded wine images with S3/CloudFront
     - Add 'blog archive' thing for older Shouts & Murmurs posts
     - Shrink larger images, use one-column layout for xs viewports
 

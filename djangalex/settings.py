@@ -3,7 +3,7 @@ import sys
 
 import dj_database_url
 
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = os.environ.get('DEBUG', '').lower() == 'true'
 
 if DEBUG:
     ALLOWED_HOSTS = ['*']
@@ -97,6 +97,7 @@ if DEBUG:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 else:
     # S3/CloudFront
+    # TODO: Install django-compressor to upload new static files automatically :)
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
