@@ -97,7 +97,7 @@ if DEBUG:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 else:
     # S3/CloudFront
-    # TODO: Install django-compressor to upload new static files automatically :)
+    # TODO: Fix collectstatic S3 bucket permissions, then re-enable Heroku collectstatic (heroku config:set DISABLE_COLLECTSTATIC=0)
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']

@@ -8,7 +8,6 @@ If you're reading this, you're reading the README.
     - Move manual setup to Python script (or better, to Docker!)
     - Move app templates to base templates directory
     - Send error emails
-    - Install django-compressor to upload new static files automatically
 - WineApp
     - Add tests for logged-in user wine recommendations
     - Add more wines, populate metadata with the usual junk
