@@ -81,7 +81,6 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'America/New_York'
 USE_I18N = True
-USE_L10N = True
 USE_TZ = True
 
 # Include jQuery with Bootstrap JavaScript
@@ -110,15 +109,21 @@ else:
     STATIC_LOCATION = 'static'
     STATIC_ROOT = f'/{STATIC_LOCATION}/'
     STATIC_URL = f'//{AWS_CLOUDFRONT_DOMAIN}/{STATIC_LOCATION}/'
-    STATICFILES_STORAGE = 'djangalex.storages.StaticStorage'
 
     # Media configuration
     MEDIA_LOCATION = 'media'
     MEDIA_ROOT = f'/{MEDIA_LOCATION}/'
     MEDIA_URL = f'//{AWS_CLOUDFRONT_DOMAIN}/{MEDIA_LOCATION}/'
-    DEFAULT_FILE_STORAGE = 'djangalex.storages.MediaStorage'
+
+    STORAGES = {
+        'default': {'BACKEND': 'djangalex.storages.MediaStorage'},
+        'staticfiles': {'BACKEND': 'djangalex.storages.StaticStorage'},
+    }
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'djangalex', 'static'),)
 
 # Parse database configuration from $DATABASE_URL
 DATABASES = {'default': dj_database_url.config()}
+
+# Existing tables use 32-bit auto PKs; keep that rather than migrating to BigAutoField
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

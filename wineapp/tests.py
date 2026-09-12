@@ -1,7 +1,5 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
-from django.test.client import Client
-from django.test.utils import setup_test_environment
 from django.urls import reverse
 from django.utils import timezone
 
@@ -55,8 +53,6 @@ class ReviewTestCase(TestCase):
 class UserTestCase(TestCase):
     def setUp(self):
         ReviewTestCase.setUp(self)
-        setup_test_environment()
-        self.client = Client()
 
     def test_user_creation(self):
         """Test basic user creation."""

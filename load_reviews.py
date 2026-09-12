@@ -13,12 +13,12 @@ from wineapp.models import Review, Wine
 
 def save_review_from_row(review_row):
     review = Review()
-    review.id = review_row[0]
-    review.user_name = review_row[1]
-    review.wine = Wine.objects.get(id=review_row[2])
-    review.rating = review_row[3]
+    review.id = review_row.iloc[0]
+    review.user_name = review_row.iloc[1]
+    review.wine = Wine.objects.get(id=review_row.iloc[2])
+    review.rating = review_row.iloc[3]
     review.pub_date = datetime.datetime.now()
-    review.comment = review_row[4]
+    review.comment = review_row.iloc[4]
     review.save()
 
 

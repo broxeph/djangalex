@@ -12,8 +12,8 @@ from django.contrib.auth.models import User
 
 def save_user_from_row(user_row):
     user = User()
-    user.id = user_row[0]
-    user.username = user_row[1]
+    user.id = user_row.iloc[0]
+    user.username = user_row.iloc[1]
     user.save()
 
 
