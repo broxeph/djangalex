@@ -1,8 +1,8 @@
 from django.conf import settings
-from storages.backends.s3boto3 import S3Boto3Storage
+from storages.backends.s3 import S3Storage
 
 
-class StaticStorage(S3Boto3Storage):
+class StaticStorage(S3Storage):
     """Upload to 'mybucket/static/', serve from 'cloudfront.net/static/'."""
     location = settings.STATIC_LOCATION
 
@@ -11,7 +11,7 @@ class StaticStorage(S3Boto3Storage):
         super(StaticStorage, self).__init__(*args, **kwargs)
 
 
-class MediaStorage(S3Boto3Storage):
+class MediaStorage(S3Storage):
     """Upload to 'mybucket/media/', serve from 'cloudfront.net/media/'."""
     location = settings.MEDIA_LOCATION
 
