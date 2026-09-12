@@ -2,7 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from django.urls import path, include
+from django.urls import path, include, reverse_lazy
 from django.views.generic import TemplateView
 from registration.backends.simple.views import RegistrationView
 
@@ -14,7 +14,7 @@ urlpatterns = [
     # Password reset is deliberately not routed: the site sends no email, so
     # those views would only ever fail.
     path('accounts/register/',
-         RegistrationView.as_view(success_url=getattr(settings, 'SIMPLE_BACKEND_REDIRECT_URL', '/')),
+         RegistrationView.as_view(success_url=reverse_lazy('wineapp:index')),
          name='registration_register'),
     path('accounts/register/closed/',
          TemplateView.as_view(template_name='registration/registration_closed.html'),
