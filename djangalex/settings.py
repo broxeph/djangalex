@@ -95,8 +95,7 @@ if DEBUG:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 else:
-    # S3/CloudFront
-    # TODO: Fix collectstatic S3 bucket permissions, then re-enable Heroku collectstatic (heroku config:set DISABLE_COLLECTSTATIC=0)
+    # S3/CloudFront. Heroku runs collectstatic on each build and uploads to the bucket's static/ prefix.
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
