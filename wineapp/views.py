@@ -1,9 +1,8 @@
-import datetime
-
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 
 from .models import Wine, Review, Post
 from .forms import ReviewForm
@@ -50,7 +49,7 @@ def add_review(request, wine_id):
         review.user_name = request.user.username
         review.rating = form.cleaned_data['rating']
         review.comment = form.cleaned_data['comment']
-        review.pub_date = datetime.datetime.now()
+        review.pub_date = timezone.now()
         review.save()
         return HttpResponseRedirect(reverse('wineapp:wine_detail', args=(wine.id,)))
 

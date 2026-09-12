@@ -17,13 +17,13 @@ If you're reading this, you're reading the README.
 
 # Local setup
 
-1. Initialize virtualenv    
-    - `python3 -m virtualenv .venv`
+1. Initialize virtualenv (Python 3.14, matching `.python-version`)
+    - `python3.14 -m venv .venv`
 2. Activate venv
     - `. .venv/bin/activate`
 3. Install Python requirements
     - `pip3 install -r requirements.txt`
-4. Install apt requirements
+4. Install apt requirements (a local Postgres server; psycopg2-binary needs no build deps)
     - `xargs -a apt-requirements.txt sudo apt-get install`
 5. Create Postgres user and database
     1. `sudo -u postgres psql`
@@ -49,9 +49,11 @@ If you're reading this, you're reading the README.
 
 # Deployment
 
-1. Install Heroku CLI
-    - `sudo snap install --classic heroku`
+1. Install Heroku CLI (snap is no longer supported)
+    - `curl https://cli-assets.heroku.com/install.sh | sh`
 2. Set Heroku env vars, if necessary
     - Can be done from Heroku GUI or `heroku config:set FOO=bar`
 3. Do the jawn!
-    - `git push heroku master`
+    - `git push origin master`
+    - The Heroku app auto-deploys from GitHub `master`, so every push to it is a production deploy
+    - Runs `python manage.py migrate` as the release step (see `Procfile`)
