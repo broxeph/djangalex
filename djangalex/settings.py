@@ -10,6 +10,9 @@ if DEBUG:
 else:
     ALLOWED_HOSTS = ['.ball.lol']
     PREPEND_WWW = True
+    # The site is HTTPS-only (Cloudflare redirects HTTP), so never send cookies in the clear
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
