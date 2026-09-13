@@ -9,7 +9,6 @@ If you're reading this, you're reading the README.
     - Move app templates to base templates directory
     - Send error emails
 - WineApp
-    - Add tests for logged-in user wine recommendations
     - Add more wines, populate metadata with the usual junk
     - Serve uploaded wine images with S3/CloudFront
     - Add 'blog archive' thing for older Shouts & Murmurs posts
