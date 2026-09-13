@@ -41,7 +41,7 @@
 <h3>Recent reviews</h3>
 
 <div class="row">
-    <div class="col-6 col-lg-4">
+    <div class="col-12 col-sm-6 col-lg-4">
     {% for review in wine.review_set.all %}
         <em>{{ review.comment }}</em>
         <h6>Rated {{ review.rating }} of 5 by <a href="{% url 'wineapp:user_review_list' review.user_name %}">{{ review.user_name }}</a></h6>

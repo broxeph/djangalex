@@ -11,7 +11,6 @@ If you're reading this, you're reading the README.
 - WineApp
     - Add more wines, populate metadata with the usual junk
     - Add 'blog archive' thing for older Shouts & Murmurs posts
-    - Shrink larger images, use one-column layout for xs viewports
 
 # Local setup
 
