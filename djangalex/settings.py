@@ -27,18 +27,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'django_extensions',
-    'registration',
     'bootstrap3',
     'home.apps.HomeConfig',
     'wineapp.apps.WineappConfig',
     'storages',
 ]
-
-SITE_ID = 1  # registration package compatibility?
-ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window
-REGISTRATION_AUTO_LOGIN = True  # Automatically log the user in.
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

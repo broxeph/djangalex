@@ -3,7 +3,6 @@ dj-database-url==3.1.2  # DATABASES setting for prod env
 Django==5.2.17
 django-bootstrap3==26.2
 django-extensions==4.1
-django-registration-redux==2.13
 django-storages==1.14.6
 gunicorn==26.2.0
 Pillow==12.3.0  # Needed by ImageField
