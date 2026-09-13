@@ -4,10 +4,7 @@ If you're reading this, you're reading the README.
 # To do
 
 - Base
-    - Specify role with `DJANGO_SETTINGS_MODULE`, e.g. `dev.py`
-    - Move manual setup to Python script (or better, to Docker!)
-    - Move app templates to base templates directory
-    - Send error emails
+    - Add error tracking (Sentry) so broken pages get noticed instead of discovered
 - WineApp
     - Add more wines, populate metadata with the usual junk
     - Add 'blog archive' thing for older Shouts & Murmurs posts
