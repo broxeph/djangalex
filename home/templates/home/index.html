@@ -1,26 +1,24 @@
-{% load static bootstrap3 %}
+{% load static django_bootstrap5 %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Alex Ball</title>
 
     <link rel="shortcut icon" type="image/png" href="{% static 'home/favicon.ico' %}"/>
-    <link rel="stylesheet" href="{% static 'home/home.css' %}">
-
     {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'home/home.css' %}">
 
     <script src="https://use.typekit.net/ljz3uhu.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
     {% include 'analytics.html' %}
 </head>
-
+<body>
 <div class="container content">
     <div class="row header">
         <div class="col-sm-4">
@@ -31,11 +29,11 @@
             <h3 class="subtitle">Full-StackOverflow Developer</h3>
             <p class="quote">{{ subtitle }}</p>
             <p class="email">
-                <a href="mailto:alex+web@ball.lol">{% bootstrap_icon "envelope" %}alex@ball.lol</a>
+                <a href="mailto:alex+web@ball.lol"><i class="bi bi-envelope"></i>alex@ball.lol</a>
             </p>
         </div>
     </div>
-    <div class="row boxes">
+    <div class="boxes">
         {% for box in boxes %}
         <div class="box">
             <a href="{{ box.link_url }}">
@@ -44,8 +42,9 @@
         </div>
         {% endfor %}
     </div>
-    <div class="footnote text-muted">
+    <div class="footnote">
         Background photo credit: Alex Ball
     </div>
 </div>
+</body>
 </html>

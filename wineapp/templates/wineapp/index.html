@@ -4,12 +4,12 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-12">
         <h1>WineApp!</h1>
     </div>
 </div>
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-12">
         <img src="{% static 'home/wineapp.png' %}" class="wineapp-logo">
         This is (supposed to be) a wine review and recommendation app,
         <a href="https://github.com/broxeph/djangalex">built with Django</a> on Heroku.
@@ -18,13 +18,13 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-12">
         <h2>Shouts &amp; Murmurs</h2>
         {% include 'wineapp/news_block.html' %}
     </div>
 </div>
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-12">
         <h2>Latest reviews</h2>
         {% include 'wineapp/review_list_block.html' %}
     </div>

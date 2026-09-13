@@ -1,11 +1,11 @@
 {% extends "wineapp/base.html" %}
 
 {% load static %}
-{% load bootstrap3 %}
+{% load django_bootstrap5 %}
 
 {% block content %}
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-12">
         {% if wine.image %}
             <img src="{{ wine.image.url }}" class="wine-img-lg">
         {% else %}
@@ -41,7 +41,7 @@
 <h3>Recent reviews</h3>
 
 <div class="row">
-    <div class="col-xs-6 col-lg-4">
+    <div class="col-6 col-lg-4">
     {% for review in wine.review_set.all %}
         <em>{{ review.comment }}</em>
         <h6>Rated {{ review.rating }} of 5 by <a href="{% url 'wineapp:user_review_list' review.user_name %}">{{ review.user_name }}</a></h6>
@@ -57,13 +57,13 @@
 <h3>Add your review</h3>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'wineapp:add_review' wine.id %}" method="post" class="form">
+<form action="{% url 'wineapp:add_review' wine.id %}" method="post" class="row row-cols-lg-auto g-3 align-items-center">
     {% csrf_token %}
     {% bootstrap_form form layout='inline' %}
-    {% buttons %}
-    <button type="submit" class="btn btn-primary">
-        {% bootstrap_icon "star" %} Add
-    </button>
-    {% endbuttons %}
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-star"></i> Add
+        </button>
+    </div>
 </form>
 {% endblock %}

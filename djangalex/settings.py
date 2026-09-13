@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'bootstrap3',
+    'django_bootstrap5',
     'home.apps.HomeConfig',
     'wineapp.apps.WineappConfig',
     'storages',
@@ -83,9 +83,6 @@ USE_TZ = True
 
 # Google Analytics 4 measurement ID (G-XXXXXXXXXX); analytics is disabled when unset
 GA_MEASUREMENT_ID = os.environ.get('GA_MEASUREMENT_ID', '')
-
-# Include jQuery with Bootstrap JavaScript
-BOOTSTRAP3 = {'include_jquery': True}
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

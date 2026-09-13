@@ -38,7 +38,7 @@ body {
     margin-top: 15px;
 }
 
-.email .glyphicon {
+.email .bi {
     color: rgb(100, 100, 255);
     margin-left: 10px;
     margin-right: 5px;
@@ -90,4 +90,5 @@ body {
 .footnote {
     text-align: center;
     padding-top: 10px;
+    color: rgba(240, 240, 240, 0.6);
 }

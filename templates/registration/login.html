@@ -1,18 +1,15 @@
 {% extends 'wineapp/base.html' %}
-{% load bootstrap3 %}
-
-{% block title %}
-<h2>Login</h2>
-{% endblock %}
+{% load django_bootstrap5 %}
 
 {% block content %}
-<form action="{% url 'login' %}" method="post" class="form">
+<h1>Login</h1>
+<form action="{% url 'login' %}" method="post" class="row row-cols-lg-auto g-3 align-items-center">
     {% csrf_token %}
     {% bootstrap_form form layout='inline' %}
-    {% buttons %}
-    <button type="submit" class="btn btn-primary">
-        {% bootstrap_icon "user" %} Login
-    </button>
-    {% endbuttons %}
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-person"></i> Login
+        </button>
+    </div>
 </form>
 {% endblock %}
