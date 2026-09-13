@@ -62,6 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'djangalex.context_processors.analytics',
             ],
         },
     },
@@ -82,6 +83,9 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'America/New_York'
 USE_I18N = True
 USE_TZ = True
+
+# Google Analytics 4 measurement ID (G-XXXXXXXXXX); analytics is disabled when unset
+GA_MEASUREMENT_ID = os.environ.get('GA_MEASUREMENT_ID', '')
 
 # Include jQuery with Bootstrap JavaScript
 BOOTSTRAP3 = {'include_jquery': True}

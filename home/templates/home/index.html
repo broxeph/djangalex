@@ -18,15 +18,7 @@
     <script src="https://use.typekit.net/ljz3uhu.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-21143191-5"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-21143191-5');
-    </script>
+    {% include 'analytics.html' %}
 </head>
 
 <div class="container content">
