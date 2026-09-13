@@ -57,3 +57,5 @@ If you're reading this, you're reading the README.
     - `git push origin master`
     - The Heroku app auto-deploys from GitHub `master`, so every push to it is a production deploy
     - Runs `python manage.py migrate` as the release step (see `Procfile`)
+4. Dependabot opens one grouped PR a month for Python package updates (see `.github/dependabot.yml`)
+    - Merging it deploys, so run `./manage.py test` on the branch first
