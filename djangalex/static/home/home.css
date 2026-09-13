@@ -39,18 +39,18 @@ body {
 }
 
 .email .bi {
-    color: rgb(100, 100, 255);
+    color: rgb(170, 170, 255);
     margin-left: 10px;
     margin-right: 5px;
     vertical-align: text-top;
 }
 
 .header a {
-    color: rgb(100, 100, 255);
+    color: rgb(170, 170, 255);
 }
 
 .header a:hover {
-    color: rgb(140, 140, 255);
+    color: rgb(210, 210, 255);
 }
 
 .box {
