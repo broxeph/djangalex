@@ -1,5 +1,3 @@
-from django.conf import settings
-from storages.backends.s3 import S3Storage
 from whitenoise.storage import CompressedManifestStaticFilesStorage
 
 
@@ -15,12 +13,3 @@ class StaticStorage(CompressedManifestStaticFilesStorage):
             return super().stored_name(name)
         except ValueError:
             return name
-
-
-class MediaStorage(S3Storage):
-    """Upload to 'mybucket/media/', serve from 'cloudfront.net/media/'."""
-    location = settings.MEDIA_LOCATION
-
-    def __init__(self, *args, **kwargs):
-        kwargs['custom_domain'] = settings.AWS_CLOUDFRONT_DOMAIN
-        super(MediaStorage, self).__init__(*args, **kwargs)
