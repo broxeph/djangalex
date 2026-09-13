@@ -8,9 +8,10 @@ not about business logic; the app-level tests cover that.
 """
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.test import TestCase
+from django.test import RequestFactory, TestCase
 from django.urls import reverse
 from django.utils import timezone
+from django.views.defaults import server_error
 
 from home.models import Box, Subtitle
 from wineapp.models import Post, Review, Wine
@@ -121,3 +122,17 @@ class SiteRenderTests(TestCase):
         response = self.client.post(reverse('wineapp:add_review', args=[self.wine.id]), {'rating': '', 'comment': ''})
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Add your review')
+
+    def test_unknown_urls_render_the_custom_404_page(self):
+        for url in ('/no-such-page/', '/wineapp/admin/'):
+            with self.subTest(url=url):
+                response = self.client.get(url)
+                self.assertEqual(response.status_code, 404)
+                self.assertTemplateUsed(response, '404.html')
+                self.assertContains(response, 'Page not found', status_code=404)
+
+    def test_500_page_renders_with_no_request_context(self):
+        # Django renders 500.html with an empty context, so the template must not need one
+        response = server_error(RequestFactory().get('/'))
+        self.assertEqual(response.status_code, 500)
+        self.assertIn(b'Something broke', response.content)

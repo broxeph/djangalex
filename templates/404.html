@@ -1,0 +1,9 @@
+{% extends 'wineapp/base.html' %}
+
+{% block content %}
+<h1>Page not found</h1>
+<p>
+    Whatever you were looking for has been drunk, decanted, or never existed.
+    Try the <a href="{% url 'wineapp:wine_list' %}">wine list</a> or head <a href="{% url 'wineapp:index' %}">home</a>.
+</p>
+{% endblock %}
