@@ -1,4 +1,5 @@
 boto3==1.43.93  # AWS S3 for django-storages
+Brotli==1.2.0  # Lets WhiteNoise precompress static files with brotli
 dj-database-url==3.1.2  # DATABASES setting for prod env
 Django==5.2.17
 django-bootstrap5==26.3
@@ -7,3 +8,4 @@ django-storages==1.14.6
 gunicorn==26.2.0
 Pillow==12.3.0  # Needed by ImageField
 psycopg2-binary==2.9.13  # Postgres
+whitenoise==6.12.0  # Serves static files from the dyno

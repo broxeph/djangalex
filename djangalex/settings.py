@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,13 +88,17 @@ GA_MEASUREMENT_ID = os.environ.get('GA_MEASUREMENT_ID', '')
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+# Static files: collected into staticfiles/ at build time and served by WhiteNoise
+# (Cloudflare caches them at the edge). Hashed filenames make them immutable, so no CDN purges.
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'djangalex', 'static'),)
+
 if DEBUG:
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 else:
-    # S3/CloudFront. Heroku runs collectstatic on each build and uploads to the bucket's static/ prefix.
+    # Uploaded media lives on S3 and is served through CloudFront
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
@@ -102,12 +107,6 @@ else:
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
     AWS_CLOUDFRONT_DOMAIN = 'd7g0p15isxilq.cloudfront.net'
 
-    # Static asset configuration
-    STATIC_LOCATION = 'static'
-    STATIC_ROOT = f'/{STATIC_LOCATION}/'
-    STATIC_URL = f'//{AWS_CLOUDFRONT_DOMAIN}/{STATIC_LOCATION}/'
-
-    # Media configuration
     MEDIA_LOCATION = 'media'
     MEDIA_ROOT = f'/{MEDIA_LOCATION}/'
     MEDIA_URL = f'//{AWS_CLOUDFRONT_DOMAIN}/{MEDIA_LOCATION}/'
@@ -116,8 +115,6 @@ else:
         'default': {'BACKEND': 'djangalex.storages.MediaStorage'},
         'staticfiles': {'BACKEND': 'djangalex.storages.StaticStorage'},
     }
-
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'djangalex', 'static'),)
 
 # Parse database configuration from $DATABASE_URL
 DATABASES = {'default': dj_database_url.config()}
