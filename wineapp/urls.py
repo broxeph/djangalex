@@ -1,4 +1,3 @@
-from django.contrib import admin
 from django.urls import path
 
 from . import views
@@ -7,8 +6,6 @@ app_name = 'wineapp'
 urlpatterns = [
     # ex: /
     path('', views.index, name='index'),
-    # ex: /admin/
-    path('admin/', admin.site.urls),
     # ex: /review_list.html
     path('review_list/', views.review_list, name='review_list'),
     # ex: /review/5/
