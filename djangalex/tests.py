@@ -136,3 +136,8 @@ class SiteRenderTests(TestCase):
         response = server_error(RequestFactory().get('/'))
         self.assertEqual(response.status_code, 500)
         self.assertIn(b'Something broke', response.content)
+
+    def test_wineapp_pages_follow_the_os_colour_scheme(self):
+        response = self.client.get(reverse('wineapp:index'))
+        self.assertContains(response, 'prefers-color-scheme')
+        self.assertContains(response, 'data-bs-theme')

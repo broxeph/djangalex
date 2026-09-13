@@ -7,6 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page_title|default:'WineApp' }}</title>
     <link rel="shortcut icon" type="image/png" href="{% static 'wineapp/favicon.ico' %}"/>
+    <meta name="color-scheme" content="light dark">
+    <script>
+        // Follow the OS colour scheme; runs before the stylesheet so there is no flash
+        (function () {
+            var dark = window.matchMedia('(prefers-color-scheme: dark)');
+            var apply = function () { document.documentElement.setAttribute('data-bs-theme', dark.matches ? 'dark' : 'light'); };
+            apply();
+            dark.addEventListener('change', apply);
+        })();
+    </script>
     {% bootstrap_css %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{% static 'wineapp/wineapp.css' %}">
