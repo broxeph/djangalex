@@ -3,3 +3,4 @@
 staticfiles
 media/images/*
 /.idea/*
+/db.sqlite3
