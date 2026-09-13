@@ -1,41 +1,36 @@
-import sys
+import csv
 import os
-import pandas as pd
-import datetime
+import sys
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangalex.settings")
 
 import django
 django.setup()
 
+from django.utils import timezone
+
 from wineapp.models import Review, Wine
 
 
-def save_review_from_row(review_row):
+def save_review_from_row(row):
     review = Review()
-    review.id = review_row.iloc[0]
-    review.user_name = review_row.iloc[1]
-    review.wine = Wine.objects.get(id=review_row.iloc[2])
-    review.rating = review_row.iloc[3]
-    review.pub_date = datetime.datetime.now()
-    review.comment = review_row.iloc[4]
+    review.id = int(row['id'])
+    review.user_name = row['username']
+    review.wine = Wine.objects.get(id=int(row['wine_id']))
+    review.rating = int(row['rating'])
+    review.pub_date = timezone.now()
+    review.comment = row['comment']
     review.save()
 
 
 if __name__ == "__main__":
     # Check number of arguments (including the command name)
     if len(sys.argv) == 2:
-        print("Reading from file " + str(sys.argv[1]))
-        reviews_df = pd.read_csv(sys.argv[1])
-        print(reviews_df)
-
-        # apply save_review_from_row to each review in the data frame
-        reviews_df.apply(
-            save_review_from_row,
-            axis=1
-        )
+        print("Reading from file " + sys.argv[1])
+        with open(sys.argv[1], newline='') as f:
+            for row in csv.DictReader(f):
+                save_review_from_row(row)
 
         print("There are {} reviews in DB".format(Review.objects.count()))
-
     else:
         print("Please provide Reviews file path.")

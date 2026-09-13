@@ -1,6 +1,6 @@
-import sys
+import csv
 import os
-import pandas as pd
+import sys
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangalex.settings")
 
@@ -10,23 +10,19 @@ django.setup()
 from wineapp.models import Wine
 
 
-def save_wine_from_row(wine_row):
+def save_wine_from_row(row):
     wine = Wine()
-    wine.id = wine_row.iloc[0]
-    wine.name = wine_row.iloc[1]
+    wine.id = int(row['id'])
+    wine.name = row['name']
     wine.save()
 
 
 if __name__ == "__main__":
     if len(sys.argv) == 2:
-        print("Reading from file " + str(sys.argv[1]))
-        wines_df = pd.read_csv(sys.argv[1])
-        print(wines_df)
-
-        wines_df.apply(
-            save_wine_from_row,
-            axis=1
-        )
+        print("Reading from file " + sys.argv[1])
+        with open(sys.argv[1], newline='') as f:
+            for row in csv.DictReader(f):
+                save_wine_from_row(row)
 
         print("There are {} wines".format(Wine.objects.count()))
     else:

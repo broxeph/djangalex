@@ -1,6 +1,6 @@
-import sys
+import csv
 import os
-import pandas as pd
+import sys
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangalex.settings")
 
@@ -10,23 +10,19 @@ django.setup()
 from django.contrib.auth.models import User
 
 
-def save_user_from_row(user_row):
+def save_user_from_row(row):
     user = User()
-    user.id = user_row.iloc[0]
-    user.username = user_row.iloc[1]
+    user.id = int(row['id'])
+    user.username = row['name']
     user.save()
 
 
 if __name__ == "__main__":
     if len(sys.argv) == 2:
-        print("Reading from file " + str(sys.argv[1]))
-        users_df = pd.read_csv(sys.argv[1])
-        print(users_df)
-
-        users_df.apply(
-            save_user_from_row,
-            axis=1
-        )
+        print("Reading from file " + sys.argv[1])
+        with open(sys.argv[1], newline='') as f:
+            for row in csv.DictReader(f):
+                save_user_from_row(row)
 
         print("There are {} users".format(User.objects.count()))
     else:
