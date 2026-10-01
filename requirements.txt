@@ -1,4 +1,4 @@
-boto3==1.43.93  # AWS S3 for django-storages
+boto3==1.43.103  # AWS S3 for django-storages
 Brotli==1.2.0  # Lets WhiteNoise precompress static files with brotli
 dj-database-url==3.1.2  # DATABASES setting for prod env
 Django==5.2.17
