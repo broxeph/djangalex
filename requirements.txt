@@ -6,6 +6,6 @@ django-bootstrap5==26.3
 django-extensions==4.1
 django-storages==1.14.6
 gunicorn==26.2.0
-Pillow==12.3.0  # Needed by ImageField
+Pillow==13.0.0  # Needed by ImageField
 psycopg2-binary==2.9.13  # Postgres
 whitenoise==6.12.0  # Serves static files from the dyno
